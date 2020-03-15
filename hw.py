@@ -21,10 +21,10 @@ with open(cwb_filename) as csvfile:
 # Part. 3
 #=======================================
 target_id = ['C0A880', 'C0F9A0', 'C0G640', 'C0R190', 'C0X260']
-target_data = []
+target_data = [] # used to store the output data
 
 for i in range(len(target_id)):
-    temp = []
+    temp = [] # temporarily store the data that will be sum to one
     current_target = target_id[i] # search different station_id in each interation
     for j in range(len(data)):
         """ search around the whole data """
@@ -33,6 +33,7 @@ for i in range(len(target_id)):
                 temp.append('None')
             else:
                 temp.append(float(data[j]['HUMD']))
+    
     sum = 0
     all_None = True
     for j in range(len(temp)):
