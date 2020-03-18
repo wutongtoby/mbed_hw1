@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 # Part. 1
 #=======================================
 # Import module
@@ -29,19 +30,16 @@ for i in range(len(target_id)):
     for j in range(len(data)):
         """ search around the whole data """
         if (data[j]['station_id'] == current_target):
-            if data[j]['HUMD'] == '-999.000' or data[j]['HUMD'] == '-99.000':
-                temp.append('None')
-            else:
+            if data[j]['HUMD'] != '-999.000' and data[j]['HUMD'] != '-99.000':
                 temp.append(float(data[j]['HUMD']))
     
-    sum = 0
-    all_None = True
-    for j in range(len(temp)):
-        if (temp[j] != 'None'):
-            all_None = False
-            sum = sum + temp[j]
-    if all_None:
+    if len(temp) == 0:
         sum = 'None'
+    else:
+        sum = 0
+        for j in range(len(temp)):
+            sum = sum + temp[j]
+    
     target_data.append([current_target, sum])
 
 #======================================
